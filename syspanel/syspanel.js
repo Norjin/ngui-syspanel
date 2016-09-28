@@ -7,7 +7,7 @@
     /* global angular */
     var app = angular.module('ngui-syspanel', []);
 
-    app.provider("$nguiConfig", function () {
+    app.provider("$nguiSyspanelConfig", function () {
         var baseTemplateUrl = "/tpl-bootstrap";
 
         return {
@@ -24,8 +24,8 @@
         };
     });
 
-    app.directive('nguiSyspanel', ['$nguiConfig',
-        function ($nguiConfig) {
+    app.directive('nguiSyspanel', ['$nguiSyspanelConfig',
+        function ($nguiSyspanelConfig) {
             return {
 
                 restrict: 'A',
@@ -39,7 +39,7 @@
                     title: '@', titleVar: '='
                 },
                 templateUrl: function (elem, attrs) {
-                    return attrs.templateUrl || $nguiConfig.baseTemplateUrl + '/syspanel.htm';
+                    return attrs.templateUrl || $nguiSyspanelConfig.baseTemplateUrl + '/syspanel.htm';
                 },
                 link: function ($scope, $ele) {
                     $ele.addClass('syspanel');
